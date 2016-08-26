@@ -21,23 +21,23 @@ class WebshopappApiClient
     /**
      * @var string
      */
-    private $apiServer = null;
+    protected $apiServer = null;
     /**
      * @var string
      */
-    private $apiKey = null;
+    protected $apiKey = null;
     /**
      * @var string
      */
-    private $apiSecret = null;
+    protected $apiSecret = null;
     /**
      * @var string
      */
-    private $apiLanguage = null;
+    protected $apiLanguage = null;
     /**
      * @var int
      */
-    private $apiCallsMade = 0;
+    protected $apiCallsMade = 0;
 
     /**
      * @var WebshopappApiResourceAccount
@@ -546,7 +546,7 @@ class WebshopappApiClient
     /**
      * @throws WebshopappApiException
      */
-    private function checkLoginCredentials()
+    protected function checkLoginCredentials()
     {
         if (strlen($this->getApiKey()) !== 32 || strlen($this->getApiSecret()) !== 32)
         {
@@ -558,7 +558,7 @@ class WebshopappApiClient
         }
     }
 
-    private function registerResources()
+    protected function registerResources()
     {
         $this->account                   = new WebshopappApiResourceAccount($this);
         $this->accountMetafields         = new WebshopappApiResourceAccountMetafields($this);
@@ -669,7 +669,7 @@ class WebshopappApiClient
      *
      * @return string
      */
-    private function getUrl($resourceUrl, $params = null)
+    protected function getUrl($resourceUrl, $params = null)
     {
         if ($this->apiServer == 'live')
         {
@@ -739,7 +739,7 @@ class WebshopappApiClient
      * @return mixed The decoded response object
      * @throws WebshopappApiException
      */
-    private function sendRequest($url, $method, $payload = null)
+    protected function sendRequest($url, $method, $payload = null)
     {
         $this->checkLoginCredentials();
 
@@ -816,7 +816,7 @@ class WebshopappApiClient
      *
      * @throws WebshopappApiException
      */
-    private function handleResponseError($responseCode, $responseBody)
+    protected function handleResponseError($responseCode, $responseBody)
     {
         $errorMessage = 'Unknown error: ' . $responseCode;
 
@@ -833,7 +833,7 @@ class WebshopappApiClient
      *
      * @throws WebshopappApiException
      */
-    private function handleCurlError($curlHandle)
+    protected function handleCurlError($curlHandle)
     {
         $errorMessage = 'Curl error: ' . curl_error($curlHandle);
 
@@ -897,7 +897,7 @@ class WebshopappApiResourceAccount
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -919,7 +919,7 @@ class WebshopappApiResourceAccountMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -962,7 +962,7 @@ class WebshopappApiResourceAccountPermissions
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -984,7 +984,7 @@ class WebshopappApiResourceAccountRatelimit
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1006,7 +1006,7 @@ class WebshopappApiResourceAdditionalcosts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1074,7 +1074,7 @@ class WebshopappApiResourceAttributes
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1155,7 +1155,7 @@ class WebshopappApiResourceBlogs
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1236,7 +1236,7 @@ class WebshopappApiResourceBlogsArticles
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1317,7 +1317,7 @@ class WebshopappApiResourceBlogsArticlesImage
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1366,7 +1366,7 @@ class WebshopappApiResourceBlogsArticlesTags
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1433,7 +1433,7 @@ class WebshopappApiResourceBlogsComments
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1514,7 +1514,7 @@ class WebshopappApiResourceBlogsTags
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1595,7 +1595,7 @@ class WebshopappApiResourceBrands
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1676,7 +1676,7 @@ class WebshopappApiResourceBrandsImage
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1725,7 +1725,7 @@ class WebshopappApiResourceCatalog
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1768,7 +1768,7 @@ class WebshopappApiResourceCategories
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1849,7 +1849,7 @@ class WebshopappApiResourceCategoriesImage
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1898,7 +1898,7 @@ class WebshopappApiResourceCategoriesProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -1965,7 +1965,7 @@ class WebshopappApiResourceCheckouts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2042,7 +2042,7 @@ class WebshopappApiResourceCheckoutsOrder
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2067,7 +2067,7 @@ class WebshopappApiResourceCheckoutsPayment_methods
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2091,7 +2091,7 @@ class WebshopappApiResourceCheckoutsProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2173,7 +2173,7 @@ class WebshopappApiResourceCheckoutsShipment_methods
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2198,7 +2198,7 @@ class WebshopappApiResourceCheckoutsValidate
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2222,7 +2222,7 @@ class WebshopappApiResourceContacts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2265,7 +2265,7 @@ class WebshopappApiResourceCountries
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2308,7 +2308,7 @@ class WebshopappApiResourceCustomers
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2389,7 +2389,7 @@ class WebshopappApiResourceCustomersLogin
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2416,7 +2416,7 @@ class WebshopappApiResourceCustomersMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2502,7 +2502,7 @@ class WebshopappApiResourceCustomersTokens
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2529,7 +2529,7 @@ class WebshopappApiResourceDashboard
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2553,7 +2553,7 @@ class WebshopappApiResourceDeliverydates
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2634,7 +2634,7 @@ class WebshopappApiResourceDiscountrules
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2715,7 +2715,7 @@ class WebshopappApiResourceDiscounts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2796,7 +2796,7 @@ class WebshopappApiResourceEvents
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2850,7 +2850,7 @@ class WebshopappApiResourceExternal_services
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2917,7 +2917,7 @@ class WebshopappApiResourceFiles
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -2998,7 +2998,7 @@ class WebshopappApiResourceFilters
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3079,7 +3079,7 @@ class WebshopappApiResourceFiltersValues
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3165,7 +3165,7 @@ class WebshopappApiResourceGroups
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3246,7 +3246,7 @@ class WebshopappApiResourceGroupsCustomers
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3313,7 +3313,7 @@ class WebshopappApiResourceInvoices
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3370,7 +3370,7 @@ class WebshopappApiResourceInvoicesItems
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3415,7 +3415,7 @@ class WebshopappApiResourceInvoicesMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3501,7 +3501,7 @@ class WebshopappApiResourceLanguages
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3544,7 +3544,7 @@ class WebshopappApiResourceMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3625,7 +3625,7 @@ class WebshopappApiResourceOrders
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3682,7 +3682,7 @@ class WebshopappApiResourceOrdersCredit
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3709,7 +3709,7 @@ class WebshopappApiResourceOrdersMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3795,7 +3795,7 @@ class WebshopappApiResourceOrdersProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3840,7 +3840,7 @@ class WebshopappApiResourceOrdersCustomstatuses
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3921,7 +3921,7 @@ class WebshopappApiResourceOrdersEvents
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -3964,7 +3964,7 @@ class WebshopappApiResourcePaymentmethods
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4007,7 +4007,7 @@ class WebshopappApiResourceProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4088,7 +4088,7 @@ class WebshopappApiResourceProductsAttributes
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4169,7 +4169,7 @@ class WebshopappApiResourceProductsFiltervalues
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4231,7 +4231,7 @@ class WebshopappApiResourceProductsImages
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4317,7 +4317,7 @@ class WebshopappApiResourceProductsMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4403,7 +4403,7 @@ class WebshopappApiResourceProductsRelations
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4489,7 +4489,7 @@ class WebshopappApiResourceQuotes
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4559,7 +4559,7 @@ class WebshopappApiResourceQuotesConvert
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4586,7 +4586,7 @@ class WebshopappApiResourceQuotesPaymentmethods
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4621,7 +4621,7 @@ class WebshopappApiResourceQuotesProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4707,7 +4707,7 @@ class WebshopappApiResourceQuotesShippingmethods
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4743,7 +4743,7 @@ class WebshopappApiResourceRedirects
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4824,7 +4824,7 @@ class WebshopappApiResourceReturns
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4905,7 +4905,7 @@ class WebshopappApiResourceReviews
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -4986,7 +4986,7 @@ class WebshopappApiResourceSets
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5067,7 +5067,7 @@ class WebshopappApiResourceShipments
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5124,7 +5124,7 @@ class WebshopappApiResourceShipmentsMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5210,7 +5210,7 @@ class WebshopappApiResourceShipmentsProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5255,7 +5255,7 @@ class WebshopappApiResourceShippingmethods
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5298,7 +5298,7 @@ class WebshopappApiResourceShippingmethodsCountries
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5343,7 +5343,7 @@ class WebshopappApiResourceShippingmethodsValues
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5388,7 +5388,7 @@ class WebshopappApiResourceShop
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5410,7 +5410,7 @@ class WebshopappApiResourceShopCompany
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5432,7 +5432,7 @@ class WebshopappApiResourceShopJavascript
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5467,7 +5467,7 @@ class WebshopappApiResourceShopLimits
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5489,7 +5489,7 @@ class WebshopappApiResourceShopMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5570,7 +5570,7 @@ class WebshopappApiResourceShopScripts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5651,7 +5651,7 @@ class WebshopappApiResourceShopTracking
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5732,7 +5732,7 @@ class WebshopappApiResourceShopWebsite
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5754,7 +5754,7 @@ class WebshopappApiResourceSubscriptions
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5835,7 +5835,7 @@ class WebshopappApiResourceSuppliers
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5916,7 +5916,7 @@ class WebshopappApiResourceTags
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -5997,7 +5997,7 @@ class WebshopappApiResourceTagsProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6064,7 +6064,7 @@ class WebshopappApiResourceTaxes
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6145,7 +6145,7 @@ class WebshopappApiResourceTaxesOverrides
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6231,7 +6231,7 @@ class WebshopappApiResourceTextpages
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6312,7 +6312,7 @@ class WebshopappApiResourceThemeCategories
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6393,7 +6393,7 @@ class WebshopappApiResourceThemeProducts
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6474,7 +6474,7 @@ class WebshopappApiResourceTickets
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6555,7 +6555,7 @@ class WebshopappApiResourceTicketsMessages
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6641,7 +6641,7 @@ class WebshopappApiResourceTime
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6663,7 +6663,7 @@ class WebshopappApiResourceTypes
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6744,7 +6744,7 @@ class WebshopappApiResourceTypesAttributes
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6811,7 +6811,7 @@ class WebshopappApiResourceVariants
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6892,7 +6892,7 @@ class WebshopappApiResourceVariantsMetafields
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -6978,7 +6978,7 @@ class WebshopappApiResourceVariantsBulk
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -7004,7 +7004,7 @@ class WebshopappApiResourceVariantsMovements
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
@@ -7047,7 +7047,7 @@ class WebshopappApiResourceWebhooks
     /**
      * @var WebshopappApiClient
      */
-    private $client;
+    protected $client;
 
     public function __construct(WebshopappApiClient $client)
     {
